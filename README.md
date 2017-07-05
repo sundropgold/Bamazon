@@ -20,8 +20,8 @@
 
 5) When the user enters a product whose quantity is also available in the stock quantity, the transaction will go through. The stock quantity is updated in the products table, and the user will receive a receipt of the item they purchased.
 
-![user purchase success](images/screenshot_successful)
+![user purchase success](images/screenshot_successful.png)
 
 6) The table will be updated at the ID of the user's chosen product. The stock number will go down by how much quantity the user purchased.
 
-![user purchase success](images/screenshot_successfultable)
+![user purchase success](images/screenshot_successfultable.png)
