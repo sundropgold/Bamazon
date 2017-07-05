@@ -36,6 +36,8 @@ var displayProducts = function() {
 				+ res[i].product_name + "  |  Department Name: " 
 				+ res[i].department_name + "  |  Price: $" + res[i].price);
 		}
+
+		return res;
 	});
 };
 
@@ -61,27 +63,43 @@ var askCustomer = function() {
 			}
 			]).then(function(user){
 
-				// check if the store has enough of the product
+					// check if the store has enough of the product
+					// cycle through res to find the right id
+					for (var i = 0; i < res.length; i++) {
 
-				if (user.quantity > res[i].stock_quantity) {
-					console.log ("Sorry, insufficient quantity available. Directing you back to options ...");
+						if (user.id === res[i].item_id) {
 
-					askCustomer();
-				}
+							if (user.quantity > res[i].stock_quantity) {
+								console.log ("Sorry, insufficient quantity available. Directing you back to options ...");
 
-				else if (user.quantity <= res[i].stock_quantity) {
+								askCustomer();
+							}
 
-					// get new stock quantity
-					var newStock = res.stock_quantity - user.quantity;
+							else if (user.quantity <= res[i].stock_quantity) {
 
-					// if there's enough in stock, update the database
-					connection.query("UPDATE products SET ? WHERE ?", [{
-						stock_quantity: newStock
-					},{
-						item_id: user.id
-					}], function(err, res){
-						if(err) throw err;
-					});
+								// get new stock quantity
+								var newStock = res[i].stock_quantity - user.quantity;
+
+								// if there's enough in stock, update the database
+								connection.query("UPDATE products SET ? WHERE ?", [{
+									stock_quantity: newStock
+									},{
+									item_id: user.id
+								}], function(err, res){
+									if(err) throw err;
+
+									// tally total = quantity * price
+									var total = user.quantity * res[i].price;
+
+									// print receipt
+									console.log("Thank you for your purchase!");
+									console.log("============================")
+									console.log("Total: $" + total);
+							});
+
+						}
+					}
+				
 				}
 
 			});
