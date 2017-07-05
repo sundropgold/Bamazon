@@ -1,5 +1,6 @@
 # Bamazon
 
+## bamazonCustomer.js
 1) After creation of the Bamazon database and products table, this is what the products table looks like.
 
 ![initial products table](images/screenshot_start.png)
@@ -25,3 +26,6 @@
 6) The table will be updated at the ID of the user's chosen product. The stock number will go down by how much quantity the user purchased.
 
 ![user purchase success](images/screenshot_successfultable.png)
+
+
+## bamazonManager.js
