@@ -70,7 +70,7 @@ var askCustomer = function() {
 						if (user.id === res[i].item_id) {
 
 							if (user.quantity > res[i].stock_quantity) {
-								console.log ("Sorry, insufficient quantity available. Directing you back to options ...");
+								console.log ("Sorry, insufficient quantity available. Directing you back to products...");
 
 								askCustomer();
 							}
@@ -93,7 +93,7 @@ var askCustomer = function() {
 
 									// print receipt
 									console.log("Thank you for your purchase!");
-									console.log("============================")
+									console.log("============================");
 									console.log("Total: $" + total);
 							});
 
@@ -101,6 +101,25 @@ var askCustomer = function() {
 					}
 				
 				}
+
+				inquirer.prompt([
+						{
+							type:"confirm",
+							name:"continue",
+							message:"Would you like to continue shopping?"
+							default:true
+						}
+
+					]).then(function(user){
+
+						if (user.continue === true){
+							console.log("Directing you back to products... ");
+							askCustomer();
+						}
+						else {
+							console.log("Have a magical day!!");
+						}
+					});
 
 			});
 
