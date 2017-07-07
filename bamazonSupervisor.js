@@ -1,0 +1,155 @@
+/*
+
+
+
+PSEUDOCODING ONLY
+
+
+
+
+*/
+
+// get inquirer
+
+var inquirer = require("inquirer");
+
+// get mysql
+var mysql = require("mysql");
+
+var connection = mysql.createConnection({
+
+	host:"localhost",
+	port:8889,
+	user:"root",
+	password:"root",
+	database:"bamazon"
+});
+
+connection.connect(function(err){
+	// make sure that a connection is established
+
+	if (err) throw err;
+
+	menuOptions();
+});
+
+function menuOptions(){
+	// function that brings up menu options for supervisor
+
+	console.log("======= Welcome to the Options Menu, Supervisor! =======");
+
+	inquirer.prompt([
+		{
+			type:"list",
+			name:"options",
+			message:"Pick an option.",
+			choices:["View Product Sales By Department", "Create New Department", "Log Out"]
+		}.then(function(user){
+
+			// if the user picks view product sales
+			if (user.options === "View Product Sales By Department"){
+
+				// display summarized table in terminal
+				// department id, department name, over head costs, product sales, total profit
+
+				viewSales();
+			}
+
+			// else if the user picks create new department
+			else if (user.options === "Create New Department") {
+
+				createDept();
+
+			}
+
+			// else if the user picks to log out
+			else if (user.options === "Log Out") {
+
+				console.log("Logging out...");
+
+			}
+
+		});
+
+		])
+}
+
+function viewSales(){
+
+	// do an inner join to get dept & product info on one table
+	var query="SELECT departments.department_name, departments.over_head_costs, products.product_sales ";
+	query += "FROM products INNER JOIN departments ON (departments.department_name = products.department_name)";
+
+	connection.query(query, function(err, res){
+
+		// log out the resulting table
+
+		// go back to menu options
+		menuOptions();
+
+	})
+}
+
+function createDept(){
+
+	// ask for information about the new department
+	// dept name and overhead costs
+	// id will auto increment
+
+	connection.query("SELECT * FROM departments", function (err, res){
+
+		inquirer.prompt([
+		{
+			type:"input",
+			name:"dept",
+			message:"What is the new department's name?",
+			validate:function(dept){
+				for (var i = 0; i < res.length;i++){
+					if (res[i].department_name === dept){
+						console.log("This department already exists.");
+					}
+				}
+				return true;
+			}
+		},
+		{
+			type:"input",
+			name:"ovhcost",
+			message:"What is this department's over head cost?",
+			validate: function(ovhcost){
+				if (isNaN(ovhcost) === false){
+						return true;
+					}
+					return false;
+			}
+		}
+
+		]).then(function(user){
+
+			var deptName = user.dept;
+			var overheadcost = parseInt(user.ovhcost);
+
+			connection.query(
+					"INSERT INTO departments SET ?",
+					{
+						department_name: deptName,
+						over_head_costs: overheadcost
+					}, function(err,res) {
+
+					// log receipt of new product
+					console.log("===== UPDATED DEPARTMENTS DATABASE SUCCESSFULLY =====");
+
+					console.log( 
+						"\nDepartment Name: " + deptName + 
+						"\nOver Head Costs: " + overheadcost + "\n\n");
+
+					// go back to options
+					menuOptions();
+
+				});
+
+		});
+
+	});
+
+}
