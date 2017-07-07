@@ -175,14 +175,13 @@ function addStock() {
 
 			var itemID = parseInt(user.id);
 			var quantity = parseInt(user.quantity);
-			console.log("id and quantity: " + itemID + " and " + quantity);
 
-			for (var i = 0; i < res.length; i++) {
+			for (var k = 0; k < res.length; k++) {
 
-				if (res[i].item_id === itemID) {
+				if (res[k].item_id === itemID) {
 				// if the id exists, update the stock
 
-					var newStock = res[itemID-1].stock_quantity + quantity;
+					var newStock = res[(itemID-1)].stock_quantity + quantity;
 
 					connection.query("UPDATE products SET ? WHERE ?",
 						// update products table and set stock quantity to new stock
@@ -196,24 +195,7 @@ function addStock() {
 						}
 					], function(err, res){
 
-							console.log("===== ADDED STOCK TO ITEMS =====");
-
-							for (var i = 0; i < res.length; i++){
-
-								if (itemID == res[i].item_id) {
-
-									// log a receipt of the product that had its stock updated
-
-									console.log("\nProduct ID: " + res[i].item_id + 
-										" | Product Name: " + res[i].product_name + 
-										"\nDepartment Name: " + res[i].department_name + 
-										"\nStock Quantity: " + res[i].stock_quantity +
-										"\nPrice: $" + res[i].price + "\n\n");
-
-									console.log(quantity + " of " + res[i].product_name + " was added to product ID " + res[i].item_id + ".");
-
-								}
-							}
+							console.log("===== ADDED STOCK TO ITEMS SUCCESSFULLY =====");
 
 							// go back to options
 							menuOptions();
@@ -226,7 +208,6 @@ function addStock() {
 		});
 
 	});
-
 }
 
 function addProduct(){

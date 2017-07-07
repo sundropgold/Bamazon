@@ -44,3 +44,8 @@ VALUE ("Four Leaf Clover", "Magic Charms", 1.00, 100);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Lavender Satchel", "Magic Charms", 2.00, 100);
+
+USE bamazon;
+UPDATE products
+SET stock_quantity = 100
+WHERE item_id = 9;
