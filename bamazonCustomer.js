@@ -80,24 +80,28 @@ function askCustomer() {
 			// cycle through res to find the right id
 			for (var i = 0; i < res.length; i++) {
 
-				if (userID === (res[i].item_id - 1)) {
+				if (userID === (parseInt(res[i].item_id) - 1)) {
 
-					if (userQuantity > res[i].stock_quantity) {
+					if (userQuantity > parseInt(res[i].stock_quantity)) {
 
 						// order won't go through - insufficient quantity
 						console.log ("Sorry, insufficient quantity available.");
 
 					}
 
-					else if (userQuantity <= res[i].stock_quantity) {
+					else if (userQuantity <= parseInt(res[i].stock_quantity)) {
 
 						// get new stock quantity
-						var newStock = res[i].stock_quantity - userQuantity;
+						var newStock = parseInt(res[i].stock_quantity) - userQuantity;
 
 						// tally total = quantity * price
-						var total = userQuantity * res[i-1].price;
+						var total = userQuantity * parseFloat(res[i-1].price);
 
 						var productName = res[i-1].product_name;
+
+						// update product sales
+						var productSales = parseInt(res[i].product_sales);
+						var updateSales = productSales + total;
 
 						// if there's enough in stock, update the database
 						connection.query("UPDATE products SET ? WHERE ?", [{
@@ -107,10 +111,19 @@ function askCustomer() {
 						}], function(err, res){
 							if(err) throw err;
 
-							// print receipt
-							console.log("\n\nThank you for your purchase!");
-							console.log("============================");
-							console.log("Total of " + productName + ": $" + total);
+								// print receipt
+								console.log("\n\nThank you for your purchase!");
+								console.log("============================");
+								console.log("Total of " + productName + ": $" + total);
+
+						});
+
+						// update product sales too
+						connection.query("UPDATE products SET ? WHERE ?", [{
+							product_sales: updateSales
+						},{
+							item_id: userID
+						}], function(err, res){
 
 						});
 

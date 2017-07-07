@@ -1,5 +1,7 @@
 CREATE DATABASE bamazon;
 USE bamazon;
+
+-- products table --
 CREATE TABLE products (
 	item_id INTEGER (11) AUTO_INCREMENT NOT NULL,
     product_name VARCHAR (50) NOT NULL,
@@ -45,10 +47,23 @@ VALUE ("Four Leaf Clover", "Magic Charms", 1.00, 100);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Lavender Satchel", "Magic Charms", 2.00, 100);
 
--- testing --
+ALTER TABLE products
+ADD product_sales INTEGER(30) NOT NULL;
+
+ALTER TABLE products
+DROP COLUMN product_sales;
+
+-- products table testing --
 USE bamazon;
 UPDATE products
 SET stock_quantity = 50
 WHERE item_id = 6;
 
 DELETE FROM products WHERE product_name = "Pixie Dust";
+
+-- departments table --
+CREATE TABLE departments (
+	department_id INTEGER (11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    department_name VARCHAR (50) NOT NULL,
+    over_head_costs INTEGER (30) NOT NULL
+);
