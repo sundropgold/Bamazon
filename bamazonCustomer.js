@@ -65,7 +65,7 @@ function askCustomer() {
 			name:"quantity",
 			message:"How many units of the product would you like to purchase?",
 			validate:function(amount) {
-					if (isNaN(price) === false){
+					if (isNaN(amount) === false){
 						return true;
 					}
 					return false;
