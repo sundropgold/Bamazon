@@ -16,6 +16,9 @@ var inquirer = require("inquirer");
 // get mysql
 var mysql = require("mysql");
 
+// get cli-table
+var Table = require("cli-table");
+
 var connection = mysql.createConnection({
 
 	host:"localhost",
@@ -83,6 +86,22 @@ function viewSales(){
 	connection.query(query, function(err, res){
 
 		// log out the resulting table
+
+		// instantiate 
+		var table = new Table({
+		    head: ['department_id', 'department_name', 'over_head_costs', 'product_sales', 'total_profit'],
+		  	colWidths: [100, 200]
+		});
+		 
+		// table is an Array, so you can `push`, `unshift`, `splice` and friends 
+		for (var n=0; n < res.length; n++){
+			// loop through the inner join to get the data to push on
+			table.push(
+		    	[res[n].department_id, res[n].department_name, parseInt(res[n].over_head_costs), parseInt(res[n].product_sales), (parseInt(res[n].over_head_costs) - parseInt(res[n].product_sales))]
+			);
+		}
+		 
+		console.log(table.toString());
 
 		// go back to menu options
 		menuOptions();
