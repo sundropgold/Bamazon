@@ -25,7 +25,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Magical Theory", "Spell Books", 20.00, 50);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("Magic for Beginners", "Spell Books", 25.00, 50);
+VALUE ("Magic for Beginners", "Spell Books", 25.00, 40);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Spells 101", "Spell Books", 20.00, 50);
@@ -34,7 +34,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("History of Magic", "Spell Books", 10.00, 100);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("Lucky Potion", "Magic Charms", 10.00, 100);
+VALUE ("Lucky Potion", "Magic Charms", 10.00, 105);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Fortune Candle", "Magic Charms", 5.00, 100);
