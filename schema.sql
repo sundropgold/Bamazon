@@ -49,3 +49,5 @@ USE bamazon;
 UPDATE products
 SET stock_quantity = 100
 WHERE item_id = 9;
+
+DELETE FROM products WHERE product_name = "Pixie Dust";

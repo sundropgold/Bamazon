@@ -46,14 +46,30 @@ function askCustomer() {
 		{
 			type:"input",
 			name:"id",
-			message:"Please enter the id of the product you would like to purchase."
+			message:"Please enter the id of the product you would like to purchase.",
+			validate: function(id) {
+					// validate if that id number exists
+
+					for (var i =0; i < res.length; i++) {
+						if (res[i].item_id == id) {
+							console.log("This ID doesn't exist.");
+						}
+						return true;
+					}
+				}
 		},
 
 		// ask how many units of the product they would like to buy?
 		{
 			type:"input",
 			name:"quantity",
-			message:"How many units of the product would you like to purchase?"
+			message:"How many units of the product would you like to purchase?",
+			validate:function(amount) {
+					if (isNaN(price) === false){
+						return true;
+					}
+					return false;
+				}
 		}
 		]).then(function(user){
 

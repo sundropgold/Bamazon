@@ -232,7 +232,7 @@ function addProduct(){
 				validate: function(product){
 					// check if the product already exists
 					for (var i = 0; i < res.length; i++){
-						if (res[i].product_name.indexOf(product) > -1) {
+						if (res[i].product_name == product) {
 							console.log("Sorry, this product already exists.");
 						}						
 					}
@@ -249,7 +249,7 @@ function addProduct(){
 			{
 				type:"input",
 				name:"price",
-				message:"How much does this product cost?",
+				message:"How much does this product cost? (Omit dollar sign.)",
 				validate: function(price){
 					// validate if price is a number
 					if (isNaN(price) === false){
@@ -263,7 +263,7 @@ function addProduct(){
 				name:"amount",
 				message:"How much of this product is in stock?",
 				validate:function(amount) {
-					if (isNaN(price) === false){
+					if (isNaN(amount) === false){
 						return true;
 					}
 					return false;
@@ -288,22 +288,19 @@ function addProduct(){
 						stock_quantity: stockAmt
 					}, function(err,res) {
 
-					}
-				);
+					// log receipt of new product
+					console.log("===== UPDATED PRODUCT DATABASE SUCCESSFULLY =====");
 
-				// log receipt of new product
-				console.log("===== UPDATED PRODUCT DATABASE =====");
+					console.log( 
+						"\nProduct Name: " + productName + 
+						"\nDepartment Name: " + deptName + 
+						"\nStock Quantity: " + stockAmt +
+						"\nPrice: $" + productPrice + "\n\n");
 
-					for (var i = 0; i <res.length; i++) {
-						console.log("\nProduct ID: " + res[i].item_id + 
-							" | Product Name: " + res[i].product_name + 
-							"\nDepartment Name: " + res[i].department_name + 
-							"\nStock Quantity: " + res[i].stock_quantity +
-							"\nPrice: $" + res[i].price + "\n\n");
-					}
+					// go back to options
+					menuOptions();
 
-				// go back to options
-				menuOptions();
+				});
 
 			});
 
