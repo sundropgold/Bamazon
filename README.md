@@ -45,6 +45,15 @@
 
 ![manager low inventory product table](images/screenshot_lowinvtable.png)
 
+3.5) After testing the other functions below, we come back to low inventory. It turns out a customer purchased several Phoenix Tears, making the inventory lower than 5. The update is shown in the table too.
+
+![manager low inventory2](images/screenshot_lowinventory2.png)
+
+![manager low inventory2](images/screenshot_lowinventory4.png)
+
+When the manager goes back to check low inventory, now they will see the Phoenix Tears listed there.
+![manager low inventory2](images/screenshot_lowinventory3.png)
+
 4) When the manager picks to add stock to items, they will have to enter the id of the item they'd like to add stock to, and the quantity of stock they are adding. If added successfully, the manager will see a success message and the table will be updated.
 
 ![manager add stock](images/screenshot_addstock.png)

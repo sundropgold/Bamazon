@@ -25,7 +25,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Magical Theory", "Spell Books", 20.00, 50);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("Magic for Beginners", "Spell Books", 25.00, 40);
+VALUE ("Magic for Beginners", "Spell Books", 25.00, 50);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Spells 101", "Spell Books", 20.00, 50);
@@ -45,9 +45,10 @@ VALUE ("Four Leaf Clover", "Magic Charms", 1.00, 100);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Lavender Satchel", "Magic Charms", 2.00, 100);
 
+-- testing --
 USE bamazon;
 UPDATE products
-SET stock_quantity = 100
-WHERE item_id = 9;
+SET stock_quantity = 50
+WHERE item_id = 6;
 
 DELETE FROM products WHERE product_name = "Pixie Dust";
