@@ -151,10 +151,13 @@ function addStock() {
 				message:"Enter the ID of the item you'd like to add stock to.",
 				validate: function(id) {
 					// validate if that id number exists
-					if (res.indexOf(id) == -1) {
-						console.log("This ID doesn't exist.");
+
+					for (var i =0; i < res.length; i++) {
+						if (res[i].item_id == id) {
+							console.log("This ID doesn't exist.");
+						}
+						return true;
 					}
-					return true;
 				}	
 			},
 			{
@@ -172,48 +175,53 @@ function addStock() {
 
 			var itemID = parseInt(user.id);
 			var quantity = parseInt(user.quantity);
+			console.log("id and quantity: " + itemID + " and " + quantity);
 
-			if (res.indexOf(itemID) > -1) {
+			for (var i = 0; i < res.length; i++) {
+
+				if (res[i].item_id === itemID) {
 				// if the id exists, update the stock
 
-				var newStock = res[itemID-1].stock_quantity + quantity;
+					var newStock = res[itemID-1].stock_quantity + quantity;
 
-				connection.query("UPDATE products SET ? WHERE ?",
-					// update products table and set stock quantity to new stock
-					// where the item id is the same id as the user entered
-				[
-					{
-						stock_quantity: newStock
-					},
-					{
-						item_id: itemID
-					}
-				], function(err, res){
-
-						console.log("===== ADDED STOCK TO ITEMS =====");
-
-						for (var i = 0; i < res.length; i++){
-
-							if (itemID == res[i].item_id) {
-
-								// log a receipt of the product that had its stock updated
-
-								console.log("\nProduct ID: " + res[i].item_id + 
-									" | Product Name: " + res[i].product_name + 
-									"\nDepartment Name: " + res[i].department_name + 
-									"\nStock Quantity: " + res[i].stock_quantity +
-									"\nPrice: $" + res[i].price + "\n\n");
-
-								console.log(quantity + " of " + res[i].product_name + " was added to product ID " + res[i].item_id + ".");
-
-							}
+					connection.query("UPDATE products SET ? WHERE ?",
+						// update products table and set stock quantity to new stock
+						// where the item id is the same id as the user entered
+					[
+						{
+							stock_quantity: newStock
+						},
+						{
+							item_id: itemID
 						}
+					], function(err, res){
 
-						// go back to options
-						menuOptions();
-					}
-				);
-			}
+							console.log("===== ADDED STOCK TO ITEMS =====");
+
+							for (var i = 0; i < res.length; i++){
+
+								if (itemID == res[i].item_id) {
+
+									// log a receipt of the product that had its stock updated
+
+									console.log("\nProduct ID: " + res[i].item_id + 
+										" | Product Name: " + res[i].product_name + 
+										"\nDepartment Name: " + res[i].department_name + 
+										"\nStock Quantity: " + res[i].stock_quantity +
+										"\nPrice: $" + res[i].price + "\n\n");
+
+									console.log(quantity + " of " + res[i].product_name + " was added to product ID " + res[i].item_id + ".");
+
+								}
+							}
+
+							// go back to options
+							menuOptions();
+						}
+					); // end connection
+				} // end if statement
+
+			} // end for loop
 
 		});
 
