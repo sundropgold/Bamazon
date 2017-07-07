@@ -34,7 +34,7 @@ function menuOptions() {
 				message:"What would you like to do?",
 				choices:["View Products For Sale", "View Low Inventory Items", "Add Stock to Items", "Add New Product", "Log Out"],
 				validate: function(option){
-					if (choice.length != 1){
+					if (option.length != 1){
 						return "Please pick an option!";
 					}
 					return true;
@@ -208,14 +208,14 @@ function addStock() {
 
 							}
 						}
+
+						// go back to options
+						menuOptions();
 					}
 				);
 			}
 
 		});
-
-		// go back to options
-		menuOptions();
 
 	});
 
@@ -239,7 +239,7 @@ function addProduct(){
 			{	
 				type:"input",
 				name: "product",
-				message: "What is your new product's name?"
+				message: "What is your new product's name?",
 				validate: function(product){
 					// check if the product already exists
 					for (var i = 0; i < res.length; i++){
@@ -313,10 +313,10 @@ function addProduct(){
 							"\nPrice: $" + res[i].price + "\n\n");
 					}
 
-			});
+				// go back to options
+				menuOptions();
 
-		// go back to options
-		menuOptions();
+			});
 
 	});
 }
