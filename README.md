@@ -80,4 +80,12 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 
 4) When the supervisor picks the add new department option, they will see prompts that ask them to input a new department name and the over head costs for that department. Department id will auto increment. If successful, the supervisor will see a success message and the table will be updated. 
 
+![supervisor add department](images/screenshot_adddept.png)
+
+(In this table, the other departments haven't been inserted yet, so Potions will appear as the first.)
+'
+![supervisor add department table](images/screenshot_adddepttable.png)
+
 5) When the supervisor wants to log out, they will see a log out message. 
+
+![supervisor log out](images/screenshot_logoutsuper.png)

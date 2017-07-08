@@ -47,7 +47,8 @@ function menuOptions(){
 			name:"options",
 			message:"Pick an option.",
 			choices:["View Product Sales By Department", "Create New Department", "Log Out"]
-		}.then(function(user){
+		}
+		]).then(function(user){
 
 			// if the user picks view product sales
 			if (user.options === "View Product Sales By Department"){
@@ -73,8 +74,6 @@ function menuOptions(){
 			}
 
 		});
-
-		])
 }
 
 function viewSales(){
