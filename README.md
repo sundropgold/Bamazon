@@ -72,9 +72,19 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 ## bamazonSupervisor.js PSEUDOCODE
 1) While still using the products table, now a departments table is needed to keep track of each department and their overhead costs. After the creation of that table, the supervisor can go to the terminal menu. 
 
+(This table screenshot was taken after the department Potions was added via the add new department option.)
+
+![supervisor dept table](images/screenshot_departmentstable.png)
+
 2) The terminal options menu will let the supervisor choose whether to view product sales by department, add a new department, or log out.
 
+![supervisor options](images/screenshot_superoptions.png)
+
 2.5) To get the product sales, the bamazonCustomer.js was also updated. A new product_sales column was added to the products table, and whenever the customer chooses to purchase an item, the product sale is updated on the products table. 
+
+![supervisor options](images/screenshot_addproductsales.png)
+
+![supervisor options](images/screenshot_addproductsalestable.png)
 
 3) When the supervisor picks the view product sales department, they will see a table in the terminal with the following information: department id, department name, over head costs, product sales, and total profit. This is created by doing an inner join on the departments and products tables. (Total profit is calculated on the fly and not actually included in either the departments or products tables.)
 

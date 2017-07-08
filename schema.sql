@@ -67,3 +67,12 @@ CREATE TABLE departments (
     department_name VARCHAR (50) NOT NULL,
     over_head_costs INTEGER (30) NOT NULL
 );
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUE ("Magic Charms", 30000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUE ("Rare Artifacts", 520000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUE ("Spell Books", 20000);
