@@ -68,3 +68,16 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 6) Finally, when the manager wants to log out, they will see a log out message.
 
 ![manager log out](images/screenshot_logout.png)
+
+## bamazonSupervisor.js PSEUDOCODE
+1) While still using the products table, now a departments table is needed to keep track of each department and their overhead costs. After the creation of that table, the supervisor can go to the terminal menu. 
+
+2) The terminal options menu will let the supervisor choose whether to view product sales by department, add a new department, or log out.
+
+2.5) To get the product sales, the bamazonCustomer.js was also updated. A new product_sales column was added to the products table, and whenever the customer chooses to purchase an item, the product sale is updated on the products table. 
+
+3) When the supervisor picks the view product sales department, they will see a table in the terminal with the following information: department id, department name, over head costs, product sales, and total profit. This is created by doing an inner join on the departments and products tables. (Total profit is calculated on the fly and not actually included in either the departments or products tables.)
+
+4) When the supervisor picks the add new department option, they will see prompts that ask them to input a new department name and the over head costs for that department. Department id will auto increment. If successful, the supervisor will see a success message and the table will be updated. 
+
+5) When the supervisor wants to log out, they will see a log out message. 
