@@ -89,7 +89,7 @@ function viewSales(){
 		// instantiate 
 		var table = new Table({
 		    head: ['department_id', 'department_name', 'over_head_costs', 'product_sales', 'total_profit'],
-		  	colWidths: [100, 200]
+		  	colWidths: [50, 100]
 		});
 		 
 		// table is an Array, so you can `push`, `unshift`, `splice` and friends 

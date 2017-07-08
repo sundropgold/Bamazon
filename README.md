@@ -83,7 +83,7 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 ![supervisor add department](images/screenshot_adddept.png)
 
 (In this table, the other departments haven't been inserted yet, so Potions will appear as the first.)
-'
+
 ![supervisor add department table](images/screenshot_adddepttable.png)
 
 5) When the supervisor wants to log out, they will see a log out message. 
