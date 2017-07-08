@@ -69,7 +69,7 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 
 ![manager log out](images/screenshot_logout.png)
 
-## bamazonSupervisor.js PSEUDOCODE
+## bamazonSupervisor.js
 1) While still using the products table, now a departments table is needed to keep track of each department and their overhead costs. After the creation of that table, the supervisor can go to the terminal menu. 
 
 (This table screenshot was taken after the department Potions was added via the add new department option.)
@@ -87,6 +87,8 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 ![supervisor options](images/screenshot_addproductsalestable.png)
 
 3) When the supervisor picks the view product sales department, they will see a table in the terminal with the following information: department id, department name, over head costs, product sales, and total profit. This is created by doing an inner join on the departments and products tables. (Total profit is calculated on the fly and not actually included in either the departments or products tables.)
+
+![supervisor view sales](images/screenshot_viewsales.png)
 
 4) When the supervisor picks the add new department option, they will see prompts that ask them to input a new department name and the over head costs for that department. Department id will auto increment. If successful, the supervisor will see a success message and the table will be updated. 
 

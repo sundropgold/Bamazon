@@ -1,14 +1,3 @@
-/*
-
-
-
-PSEUDOCODING ONLY
-
-
-
-
-*/
-
 // get inquirer
 
 var inquirer = require("inquirer");
@@ -79,8 +68,9 @@ function menuOptions(){
 function viewSales(){
 
 	// do an inner join to get dept & product info on one table
-	var query="SELECT departments.department_name, departments.over_head_costs, products.product_sales ";
+	var query = "SELECT departments.department_id, departments.department_name, departments.over_head_costs, products.product_sales ";
 	query += "FROM products INNER JOIN departments ON (departments.department_name = products.department_name)";
+	query += "ORDER BY departments.department_id";
 
 	connection.query(query, function(err, res){
 
@@ -89,15 +79,21 @@ function viewSales(){
 		// instantiate 
 		var table = new Table({
 		    head: ['department_id', 'department_name', 'over_head_costs', 'product_sales', 'total_profit'],
-		  	colWidths: [50, 100]
+		  	colWidths: [18, 18, 20, 15, 15]
 		});
 		 
 		// table is an Array, so you can `push`, `unshift`, `splice` and friends 
 		for (var n=0; n < res.length; n++){
 			// loop through the inner join to get the data to push on
-			table.push(
-		    	[res[n].department_id, res[n].department_name, parseInt(res[n].over_head_costs), parseInt(res[n].product_sales), (parseInt(res[n].over_head_costs) - parseInt(res[n].product_sales))]
-			);
+
+			if (res[n].product_sales > 0){
+				// only display results if product sales are greater than 0
+				
+				table.push(
+			    	[res[n].department_id, res[n].department_name, parseInt(res[n].over_head_costs), parseInt(res[n].product_sales), (parseInt(res[n].over_head_costs) - parseInt(res[n].product_sales))]
+				);				
+			}
+
 		}
 		 
 		console.log(table.toString());
