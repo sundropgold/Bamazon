@@ -1,3 +1,13 @@
+/*
+
+
+
+PSEUDOCODE
+
+
+
+*/
+
 // get inquirer
 
 var inquirer = require("inquirer");
