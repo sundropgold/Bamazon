@@ -86,7 +86,7 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 
 ![supervisor options](images/screenshot_addproductsalestable.png)
 
-3) When the supervisor picks the view product sales department, they will see a table in the terminal with the following information: department id, department name, over head costs, product sales, and total profit. This is created by doing an inner join on the departments and products tables. (Total profit is calculated on the fly and not actually included in either the departments or products tables.)
+3) When the supervisor picks the view product sales department, they will see a table in the terminal with the following information: department id, department name, over head costs, product sales, and total profit. This is created by doing an inner join on the departments and products tables. (Total profit is calculated on the fly and not actually included in either the departments or products tables. Only products that have product sales and total profit greater than 0 are shown.)
 
 ![supervisor view sales](images/screenshot_viewsales.png)
 

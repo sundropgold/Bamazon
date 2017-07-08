@@ -86,11 +86,13 @@ function viewSales(){
 		for (var n=0; n < res.length; n++){
 			// loop through the inner join to get the data to push on
 
-			if (res[n].product_sales > 0){
+			var totalProf = (parseInt(res[n].over_head_costs) - parseInt(res[n].product_sales));
+
+			if (res[n].product_sales > 0 && totalProf > 0){
 				// only display results if product sales are greater than 0
-				
+
 				table.push(
-			    	[res[n].department_id, res[n].department_name, parseInt(res[n].over_head_costs), parseInt(res[n].product_sales), (parseInt(res[n].over_head_costs) - parseInt(res[n].product_sales))]
+			    	[res[n].department_id, res[n].department_name, parseInt(res[n].over_head_costs), parseInt(res[n].product_sales), totalProf]
 				);				
 			}
 
