@@ -103,6 +103,8 @@ function askCustomer() {
 						var productSales = parseInt(res[i].product_sales);
 						var updateSales = productSales + total;
 
+						var deptName = res[i].department_name;
+
 						// if there's enough in stock, update the database
 						connection.query("UPDATE products SET ? WHERE ?", [{
 							stock_quantity: newStock
@@ -122,7 +124,7 @@ function askCustomer() {
 						connection.query("UPDATE products SET ? WHERE ?", [{
 							product_sales: updateSales
 						},{
-							item_id: userID
+							department_name: deptName
 						}], function(err, res){
 
 						});
