@@ -220,6 +220,17 @@ function addProduct(){
 
 		if (err) throw err;
 
+		var array = [];
+
+		connection.query("SELECT * FROM departments", function(err, res){
+			if (err) throw err;
+
+			for (var x = 0; x < res.length; x++){
+				array.push(res[x].department_name);
+			}
+			return array;
+		});
+
 		console.log("===== ADD NEW PRODUCT =====");
 	
 		inquirer.prompt([
@@ -244,7 +255,7 @@ function addProduct(){
 				type:"list",
 				name:"department",
 				message: "What department does your product belong in?",
-				choices: ["Rare Artifacts", "Spell Books", "Magic Charms"]
+				choices: array
 			},
 			{
 				type:"input",
