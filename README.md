@@ -69,7 +69,7 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 
 ![manager log out](images/screenshot_logout.png)
 
-## bamazonSupervisor.js     PSEUDOCODE
+## bamazonSupervisor.js
 1) While still using the products table, now a departments table is needed to keep track of each department and their overhead costs. After the creation of that table, the supervisor can go to the terminal menu. 
 
 (This table screenshot was taken after the department Potions was added via the add new department option.)
