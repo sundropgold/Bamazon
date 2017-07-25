@@ -1,5 +1,7 @@
 # Bamazon
 
+The magical version of Amazon. Commands availalble depend on whether the user is a customer, manager, or supervisor.
+
 ## bamazonCustomer.js
 1) After creation of the Bamazon database and products table, this is what the products table looks like.
 
