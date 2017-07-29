@@ -1,8 +1,17 @@
 # Bamazon
+## Amazon but magical! BAM
 
-The magical version of Amazon. Commands availalble depend on whether the user is a customer, manager, or supervisor.
+### Summary
+The magical CLI app version of Amazon. The commands availalble depend on whether the user is a customer, manager, or supervisor. Browse around and bring home the perfect magical item!
 
-## bamazonCustomer.js
+### Features
+* MySQL Database
+* Inquirer
+* Node.js
+
+### Demo
+
+#### bamazonCustomer.js
 1) After creation of the Bamazon database and products table, this is what the products table looks like.
 
 ![initial products table](images/screenshot_start.png)
@@ -30,7 +39,7 @@ The magical version of Amazon. Commands availalble depend on whether the user is
 ![user purchase success](images/screenshot_successfultable.png)
 
 
-## bamazonManager.js
+#### bamazonManager.js
 1) Still using the same Bamazon products table, user now enters the manager view, and sees the options to view products for sale, view low inventory items, add stock to items, add new product, and log out. The options menu will show up after each function has been completed.
 
 ![manager terminal view](images/screenshot_managerview.png)
@@ -71,7 +80,7 @@ When the manager goes back to check low inventory, now they will see the Phoenix
 
 ![manager log out](images/screenshot_logout.png)
 
-## bamazonSupervisor.js
+#### bamazonSupervisor.js
 1) While still using the products table, now a departments table is needed to keep track of each department and their overhead costs. After the creation of that table, the supervisor can go to the terminal menu. 
 
 (This table screenshot was taken after the department Potions was added via the add new department option.)
